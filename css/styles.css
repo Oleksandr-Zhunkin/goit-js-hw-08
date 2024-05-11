@@ -1,0 +1,22 @@
+img {
+  display: block;
+  width: 460px;
+  height: auto;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 24px 156px;
+  justify-content: center;
+  align-items: center;
+}
+.backdropchik {
+  background-color: rgba(46, 47, 66, 0.8);
+}

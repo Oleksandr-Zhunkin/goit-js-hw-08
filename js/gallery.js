@@ -63,3 +63,67 @@ const images = [
     description: 'Lighthouse Coast Sea',
   },
 ];
+
+const elemUl = document.querySelector('.gallery');
+
+elemUl.addEventListener('click', handleOrigImg);
+
+const modalOptions = {
+  closable: true,
+
+  className: 'backdropchik',
+
+  onShow: () => {
+    window.addEventListener('keydown', onEscClick);
+    document.body.style.overflow = 'hidden';
+  },
+
+  onClose: () => {
+    window.removeEventListener('keydown', onEscClick);
+    document.body.style.overflow = 'visible';
+  },
+};
+
+// #region Markup
+
+function imageTemplate({ preview, original, description }) {
+  return `<li class="gallery-item">
+  <a class="gallery-link" href="${original}">
+    <img
+      class="gallery-image"
+      src="${preview}"
+      data-source="${original}"
+      alt="${description}"
+    />
+  </a>
+</li>`;
+}
+
+function imagesTemplate(images) {
+  return images.map(imageTemplate).join('');
+}
+
+const markup = imagesTemplate(images);
+elemUl.innerHTML = markup;
+// #endregion
+let modal = null;
+
+function handleOrigImg(e) {
+  e.preventDefault();
+
+  if (e.target.nodeName !== 'IMG') return;
+
+  const origImg = e.target.dataset.source;
+
+  const contactImg = `<img src="${origImg}" width="800" height="600">`;
+
+  modal = basicLightbox.create(contactImg, modalOptions);
+  modal.show();
+}
+
+function onEscClick(evt) {
+  if (evt.code === 'Escape') {
+    modal.close();
+    modal = null;
+  }
+}
