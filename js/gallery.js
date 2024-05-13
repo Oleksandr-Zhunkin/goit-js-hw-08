@@ -106,6 +106,7 @@ function imagesTemplate(images) {
 const markup = imagesTemplate(images);
 elemUl.innerHTML = markup;
 // #endregion
+
 let modal = null;
 
 function handleOrigImg(e) {
@@ -115,14 +116,14 @@ function handleOrigImg(e) {
 
   const origImg = e.target.dataset.source;
 
-  const contactImg = `<img src="${origImg}" width="800" height="600">`;
+  const contentImg = `<img src="${origImg}" width="800" height="600">`;
 
-  modal = basicLightbox.create(contactImg, modalOptions);
+  modal = basicLightbox.create(contentImg, modalOptions);
   modal.show();
 }
 
-function onEscClick(evt) {
-  if (evt.code === 'Escape') {
+function onEscClick(e) {
+  if (e.code === 'Escape') {
     modal.close();
     modal = null;
   }
