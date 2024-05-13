@@ -128,3 +128,14 @@ function onEscClick(e) {
     modal = null;
   }
 }
+
+// #region cursorChange
+const cursorImage = new Image();
+
+cursorImage.src = '../cursor.svg';
+
+cursorImage.onload = function () {
+  document.body.style.cursor = "url('" + cursorImage.src + "'), pointer";
+};
+
+// #endregion
