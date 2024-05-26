@@ -130,12 +130,12 @@ function onEscClick(e) {
 }
 
 // #region cursorChange
-const cursorImage = new Image();
+// const cursorImage = new Image();
 
-cursorImage.src = '../cursor.svg';
+// cursorImage.src = '../cursor.svg';
 
-cursorImage.onload = function () {
-  document.body.style.cursor = "url('" + cursorImage.src + "'), pointer";
-};
+// cursorImage.onload = function () {
+//   document.body.style.cursor = 'url(' + cursorImage.src + '), pointer';
+// };
 
 // #endregion
